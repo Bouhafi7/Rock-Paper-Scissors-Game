@@ -436,7 +436,7 @@ body{
     z-index: 1;
 }
 
-@media (max-width:907px){
+@media (max-width:991px){
     .head {
         width: calc(100% - 60px);
     }
@@ -447,6 +447,7 @@ body{
     .game-container .big-circle > div {
         width: 180px;
         height: 180px;
+        border-width: 20px;
     }
     .game-container .big-circle > div img {
         width: 60px;
