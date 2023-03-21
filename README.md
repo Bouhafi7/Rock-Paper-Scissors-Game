@@ -18,8 +18,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Github](https://github.com/Bouhafi7/Rock-Paper-Scissors-Game)
-- Live Site URL: [Render]()
+- Solution URL: [Github](https://github.com/Bouhafi7/Rock-Paper-Scissors-Game/tree/main)
+- Live Site URL: [Render](https://rock-paper-scissors-game-ev37.onrender.com/)
 
 ## My process
 
