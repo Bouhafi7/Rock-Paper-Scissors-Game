@@ -1,0 +1,632 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata&family=Barlow+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Barlow+Semi+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Barlow:wght@100;200;300;400;500;600;700;800;900&family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Bellefair&family=Cairo:wght@200;300;400;500;600;700;800;900;1000&family=Commissioner:wght@100;200;300;400;500;600;700;800;900&family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&family=Epilogue:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400&family=Fraunces:ital,opsz,wght@0,9..144,100;0,9..144,200;0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,700&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Josefin+Sans:wght@100;200;300;400;500;600;700&family=Karla:wght@200;300;400;500;600;700;800&family=Kumbh+Sans:wght@100;200;300;400;500;600;700;800;900&family=League+Spartan:wght@100;200;300;400;500;600;700;800;900&family=Libre+Franklin:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,800;1,900&family=Manrope:wght@200;300;400;500;600;700;800&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&family=Overpass:wght@100;200;300;400;500;600;700;800;900&family=Permanent+Marker&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Public+Sans:wght@100;200;300;400;500;600;700;800;900&family=Raleway:wght@100;200;300;400;500;600;700;800;900&family=Red+Hat+Text:wght@300;400;500;600;700&family=Roboto:wght@100;300;400;500;700;900&family=Rubik:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Ubuntu:wght@300;400;500;700&display=swap');
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Barlow Semi Condensed;
+}
+
+body{
+    min-height: 100vh;
+    background: linear-gradient(to bottom, hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+    position: relative;
+    overflow-x: hidden;
+}
+
+.head{
+    position: relative;
+    top: 30px;
+    margin: auto;
+    width: 800px;
+    border: 3px solid hsl(217, 16%, 45%);
+    border-radius: 6px;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.head > p{
+    text-transform: uppercase;
+    font-size: 40px;
+    line-height: .8;
+    font-weight: 600;
+    color: white;
+}
+
+.head .score-container{
+    background-color: white;
+    text-align: center;
+    padding: 10px 50px;
+    border-radius: 8px;
+}
+
+.head .score-container > p{
+    text-transform: uppercase;
+    font-weight: 700;
+    color: hsl(229, 64%, 46%);
+    letter-spacing: 1.3px;
+}
+
+.head .score-container .score{
+    font-size: 60px;
+    font-weight: 700;
+    color: hsl(217, 16%, 45%);
+}
+
+.rules{
+    position: absolute;
+    right: 20px;
+    bottom: 100px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 2px;
+    font-size: 15px;
+    border: 1px solid white;
+    border-radius: 8px;
+    padding: 10px 35px;
+    cursor: pointer;
+    transition: all .2s;
+}
+
+.rules:hover{
+    background-color: white;
+    color: hsl(214, 47%, 23%);
+}
+
+.rules-container{
+    width: 0;
+    height: 0;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 30px;
+    text-align: center;
+    border-radius: 10px;
+    visibility: hidden;
+    overflow: hidden;
+    opacity: 0;
+    z-index: -1;
+    transition: all .3s;
+}
+
+.rules-container.active{
+    opacity: 1;
+    z-index: 5;
+    visibility: visible;
+    animation: rules .5s;
+    width: 400px;
+    height: 410px;
+}
+
+@keyframes rules {
+    0%{
+        transform-origin: center;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+    }
+    100%{
+        border-radius: 10px;
+        width: 400px;
+        height: 410px;
+    }
+}
+
+.rules-container > div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.rules-container > div P{
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.rules-container > div i{
+    font-size: 25px;
+    color: hsl(219, 26%, 85%);
+    cursor: pointer;
+    transition: all .2s;
+}
+
+.rules-container > div i:hover{
+    color: hsl(217, 16%, 45%);
+}
+
+.overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .4);
+    opacity: 0;
+    z-index: -1;
+    visibility: hidden;
+}
+
+.overlay.active{
+    opacity: 1;
+    z-index: 4;
+    visibility: visible;
+}
+
+.game-container{
+    width: 500px;
+    height: 400px;
+    background-image: url(images/bg-triangle.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 100px auto;
+    position: relative;
+    transition: all .5s ease-in-out;
+}
+
+
+.game-container.hide{
+    background-image: none;
+}
+
+.game-container .big-circle{
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    position: relative;
+    z-index: 1;
+    opacity: 1;
+    visibility: visible;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .5s ease-in-out;
+    cursor: pointer;
+}
+
+.game-container .big-circle:hover{
+    transform: scale(1.1);
+}
+
+.game-container .big-circle.hide{
+    opacity: 0;
+    z-index: -1;
+    visibility: hidden;
+}
+
+.game-container .paper-circle{
+    top: -2rem;
+    right: 1rem;
+    background-color: #2642bf;
+}
+
+.game-container .scissors-circle{
+    left: 18rem;
+    bottom: 17rem;
+    background-color: #c76b18;
+}
+
+.game-container .rock-circle{
+    bottom: 16rem;
+    left: 9rem;
+    background-color: #9d1736;
+}
+
+
+.game-container .big-circle > div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    background-color: #ddd;
+    box-shadow: inset 0 3px 3px hsl(217, 16%, 68%);
+    border: 30px solid;
+    transform: translateY(-7px);
+}
+
+
+.game-container .big-circle > .paper{
+    border-color: hsl(230, 89%, 62%);
+}
+
+.game-container .big-circle > .rock{
+    border-color: hsl(349, 71%, 52%);
+}
+
+.game-container .big-circle > .scissors{
+    border-color: hsl(39, 89%, 49%);
+}
+
+.game-container .big-circle > div img{
+    width: 90px;
+}
+
+.game-container .big-circle > p{
+    position: absolute;
+    z-index: 10;
+    top: -40px;
+    text-transform: uppercase;
+    color: white;
+    font-weight: 600;
+    letter-spacing: 1.3px;
+    z-index: -1;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .5s ease-in-out;
+}
+
+.game-container .big-circle > p.show{
+    z-index: 2;
+    opacity: 1;
+    visibility: visible;
+    transition: all .3s ease-in-out;
+}
+
+.game-container .big-circle.winner::before,
+.game-container .big-circle.winner::after,
+.game-container .big-circle.winner > div::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+}
+
+.game-container .big-circle.winner::before{
+    width: 130%;
+    height: 130%;
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+.game-container .big-circle.winner::after{
+    width: 160%;
+    height: 160%;
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.game-container .big-circle.winner > div::before{
+    width: 260%;
+    height: 260%;
+    background-color: rgba(255, 255, 255, 0.01);
+}
+
+.game-container .chosen-agent, .game-container .house-agent{
+    visibility: hidden;
+    z-index: -1;
+    opacity: 0;
+    top: unset;
+    bottom: 40rem !important;
+    left: 10rem;
+    transition: all .5s ease-in-out;
+}
+
+.game-container .chosen-agent.ready{
+    visibility: visible;
+    z-index: 2;
+    opacity: 1;
+    left: 0rem;
+}
+
+.game-container .house-agent{
+    top: -62rem;
+    bottom: 40rem !important;
+    left: 20rem;
+}
+
+.game-container .house-agent.ready{
+    visibility: visible;
+    top: -55rem;
+    z-index: 2;
+    opacity: 1;
+}
+
+.game-container .house-agent p.show {
+    z-index: 3;
+    opacity: 1;
+    visibility: visible;
+}
+
+.game-container .chosen-agent.ready.battle, 
+.game-container .house-agent.ready.battle{
+    width: 280px;
+    height: 280px;
+    left: -10rem;
+    bottom: 35rem !important;
+}
+
+.game-container .chosen-agent.ready.battle > div,
+.game-container .house-agent.ready.battle > div{
+    border-width: 23px;
+    width: 280px;
+    height: 280px;
+}
+
+.game-container .house-agent.ready.battle{
+    top: -52rem;
+    left: 25rem;
+}
+
+
+.game-container .game-over {
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-44%);
+    top: 40%;
+    visibility: hidden;
+    opacity: 0;
+    z-index: -1;
+    transition: all .3s ease-in-out;
+}
+
+.game-container .game-over .game-over-screen{
+    font-weight: 800;
+    height: 65px;
+    font-size: 55px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: white;
+    margin-bottom: 10px;
+    opacity: 0;
+    z-index: -1;
+    visibility: hidden;
+    transition: all .3s ease-in-out;
+}
+
+.game-container .game-over .game-over-screen.show{
+    opacity: 1;
+    z-index: 3;
+    visibility: visible;
+}
+
+.game-container .game-over .rematch{
+    width: fit-content;
+    padding: 13px 60px;
+    background-color: white;
+    margin: auto;
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 8px;
+    transition: all .4s ease-in-out;
+    cursor: pointer;
+}
+
+.game-container .game-over .rematch:hover{
+    color: hsl(349, 71%, 52%);
+}
+
+.game-container .game-over.over {
+    visibility: visible;
+    opacity: 1;
+    z-index: 3;
+    top: 55%;
+}
+
+.game-container .choosed-item{
+    width: 180px;
+    height: 180px;
+    background-color: rgba(0, 0, 0, .1);
+    border-radius: 50%;
+    position: absolute;
+    left: 21.9rem;
+    bottom: 7rem;
+    z-index: 50;
+    opacity: 0;
+    z-index: -1;
+    visibility: hidden;
+    transition: all .3s ease-in-out;
+}
+
+.game-container .choosed-item.show{
+    visibility: visible;
+    opacity: 1;
+    z-index: 1;
+}
+
+@media (max-width:907px){
+    .head {
+        width: calc(100% - 60px);
+    }
+    .game-container .big-circle {
+        width: 180px;
+        height: 180px;
+    }
+    .game-container .big-circle > div {
+        width: 180px;
+        height: 180px;
+    }
+    .game-container .big-circle > div img {
+        width: 60px;
+    }
+    .game-container .scissors-circle {
+        left: 18rem;
+        bottom: 11.5rem;
+    }
+    .game-container .rock-circle {
+        bottom: 10rem;
+        left: 10.5rem;
+    }
+    .game-container .paper-circle {
+        top: unset;
+        right: -4rem;
+    }
+    .game-container .chosen-agent.ready,
+    .game-container .house-agent.ready,
+    .game-container .big-circle > div {
+        width: 180px;
+        height: 180px;
+    }
+    .game-container .chosen-agent.ready {
+        left: 2rem;
+        bottom: 30rem !important;
+        top: unset;
+    }
+    .game-container .house-agent.ready {
+        top: -41.5rem;
+        left: 20rem;
+    }
+    .game-container .chosen-agent.ready.battle, .game-container .house-agent.ready.battle {
+        width: 180px;
+        height: 180px;
+        left: 2rem;
+        bottom: 31.8rem !important;
+    }
+    .game-container .house-agent.ready.battle {
+        top: -43.1rem;
+        left: 20rem;
+    }
+    .game-container .chosen-agent.ready.battle > div, .game-container .house-agent.ready.battle > div {
+        border-width: 20px;
+        width: 180px;
+        height: 180px;
+    }
+    .game-container .game-over.over {
+        top: 70%;
+    }
+    .game-container .choosed-item {
+        width: 150px;
+        height: 150px;
+        bottom: 11.5rem;
+    }
+}
+
+@media (max-width:781px){
+    .head {
+        width: calc(100% - 40px);
+    }
+    .game-container {
+        width: 200px;
+        margin: 0 auto;
+        background-size: contain;
+    }
+    .head > p {
+        font-size: 25px;
+        font-weight: 700;
+    }
+    .head .score-container {
+        padding: 10px 25px;
+    }
+    .game-container .big-circle {
+        width: 100px;
+        height: 100px;
+    }
+    .game-container .big-circle > div {
+        width: 100px;
+        height: 100px;
+        border-width: 12px;
+        transform: translateY(-4px);
+    }
+    .game-container .big-circle > div img {
+        width: 35px;
+    }
+    .game-container .scissors-circle {
+        left: 8rem;
+        bottom: 1.7rem;
+    }
+    .game-container .rock-circle {
+        bottom: -1rem;
+        left: 3.4rem;
+    }
+    .game-container .paper-circle {
+        top: 4.5rem;
+        right: 1.5rem;
+    }
+    .game-container .big-circle > p {
+        text-align: center;
+        font-size: 10px;
+        top: -25px;
+    }
+    .game-container .choosed-item {
+        width: 80px;
+        height: 80px;
+        bottom: 15rem;
+        left: 8.5rem;
+    }
+    .game-container .chosen-agent.ready,
+    .game-container .house-agent.ready,
+    .game-container .big-circle > div {
+        width: 100px;
+        height: 100px;
+    }
+    .game-container .chosen-agent.ready {
+        top: unset;
+        left: -2rem;
+        bottom: 14rem !important;
+    }
+    .game-container .house-agent.ready {
+        top: -20.3rem;
+        left: 8rem !important;
+    }
+    .game-container .chosen-agent.ready.battle, 
+    .game-container .house-agent.ready.battle {
+        width: 100px;
+        height: 100px;
+    }
+    .game-container .chosen-agent.ready.battle {
+        left: -2rem;
+        bottom: 12rem !important;
+    }
+    .game-container .house-agent.ready.battle {
+        left: 8rem !important;
+        top: -18.25rem;
+    }
+    .game-container .house-agent {
+        left: unset;
+        top: unset;
+    }
+    .game-container .chosen-agent.ready.battle > div, 
+    .game-container .house-agent.ready.battle > div {
+        border-width: 12px;
+        width: 100px;
+        height: 100px;
+    }
+    .game-container .game-over.over {
+        top: 65%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .game-container .game-over .rematch {
+        width: 200px;
+        padding: 13px 0;
+    }
+    .game-container .game-over .game-over-screen {
+        font-weight: 700;
+        font-size: 45px;
+        width: 250px;
+    }
+    .head .score-container .score {
+        font-size: 40px;
+        font-weight: 800;
+    }
+    .rules {
+        right: 50%;
+        transform: translateX(50%);
+        bottom: 70px;
+    }
+    .rules-container {
+        height: 100% !important;
+        width: 100% !important;
+        border-radius: 0;
+    }
+    .rules-container > div i {
+        position: absolute;
+        bottom: 50px;
+    }
+    .rules-container > div {
+        justify-content: center;
+        margin: 50px auto 100px;
+    }
+}

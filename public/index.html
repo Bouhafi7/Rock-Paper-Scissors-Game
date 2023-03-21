@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="images/favicon-32x32.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Rock, Paper, Scissors game</title>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="rules">rules</div>
+    <div class="rules-container">
+        <div>
+            <p>rules</p>
+            <i class="fa-solid fa-xmark"></i>
+        </div>
+        <img src="images/image-rules.svg" alt="">
+    </div>
+
+
+    <div class="head">
+        <p>rock <br> paper <br> scissors</p>
+        <div class="score-container">
+            <p>score</p>
+            <div class="score">0</div>
+        </div>
+    </div>
+
+    <div class="game-container">
+        <div class="big-circle paper-circle" data-agent="0" data-choose="paper">
+            <p></p>
+            <div class="paper pic">
+                <img src="images/icon-paper.svg" alt="">
+            </div>
+        </div>
+        <div class="big-circle scissors-circle" data-agent="1" data-choose="scissors">
+            <p></p>
+            <div class="scissors pic">
+                <img src="images/icon-scissors.svg" alt="">
+            </div>
+        </div>
+        <div class="big-circle rock-circle" data-agent="2" data-choose="rock">
+            <p></p>
+            <div class="rock pic">
+                <img src="images/icon-rock.svg" alt="">
+            </div>
+        </div>
+        <div class="choosed-item"></div>
+    </div>
+
+
+    <script src="app.js"></script>
+</body>
+</html>
