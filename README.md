@@ -32,4 +32,4 @@ Users should be able to:
 
 ## Author
 
-- Github - [@bouhafi7](https://github.com/Bouhafi7)
+- Github - [bouhafi7](https://github.com/Bouhafi7)
